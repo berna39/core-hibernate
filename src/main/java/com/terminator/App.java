@@ -1,5 +1,7 @@
 package com.terminator;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -26,6 +28,24 @@ public class App
         em.persist(Person.builder().name("Shango Joseph").age(25).build());
 
         transaction.commit();
+
+        /*
+         * When creating a query, we should use the Java Persistance Query Language
+         * and we should either use the EntityName (Person in this case)
+         * or if the @Entity annotation has a name param, we should use the name value (people in this case) 
+         * 
+         * Note: we can also use Hibernate Query Language
+         */
+        List<Person> people = em.createQuery("from person").getResultList();
+        System.out.println(people.get(0));
+
+        /*
+         * we can also create a native query, and use the @Table's name param value as table
+         *  or the @entity's name param value
+         */
+        List<Person> peopleNative = em.createNativeQuery("select * from people").getResultList();
+        System.out.println(peopleNative.size());
+
         em.close();
     }
 }
