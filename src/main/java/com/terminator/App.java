@@ -10,6 +10,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import com.terminator.domain.Person;
+import com.terminator.domain.Song;
 
 public class App 
 {
@@ -38,6 +39,8 @@ public class App
             .dob(LocalDate.of(1978, 1, 15))
             .subscriptionDate(new Date())
             .build());
+
+        em.persist(Song.builder().title("Shape of You").script("huh wah huh wah huh wah").build());
 
         transaction.commit();
 
