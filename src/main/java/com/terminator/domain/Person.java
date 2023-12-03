@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import lombok.Builder;
 import lombok.Data;
@@ -33,4 +34,6 @@ public class Person {
     private Date subscriptionDate;
     // LocalDate is the date the calendar on the wall says.
     private LocalDate dob; // this one directly map to date
+    @Transient // when generating a table, this column will not be generated
+    private String token;
 }
