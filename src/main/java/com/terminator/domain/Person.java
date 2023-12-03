@@ -1,5 +1,6 @@
 package com.terminator.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class Person {
     // @GeneratedValue(strategy = GenerationType.SEQUENCE) : to use a sequence
     // @GeneratedValue(strategy = GenerationType.TABLE) : to use a table -> emulate sequence for dbms wich does not support sequences
     private Long id;
+    @Column(name = "fullname", unique = true, length = 199)
     private String name;
     private int age;
 }
