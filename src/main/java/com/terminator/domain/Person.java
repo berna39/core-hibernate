@@ -1,11 +1,16 @@
 package com.terminator.domain;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Builder;
 import lombok.Data;
@@ -23,5 +28,9 @@ public class Person {
     private Long id;
     @Column(name = "fullname", unique = true, length = 199)
     private String name;
-    private int age;
+    @Temporal(TemporalType.DATE) // by default a date is stored a timestamp, we use @Temoral to change the format
+    // in Java, Date represents an instant, and actually represents a millisecond offset from Unix epoch
+    private Date subscriptionDate;
+    // LocalDate is the date the calendar on the wall says.
+    private LocalDate dob; // this one directly map to date
 }

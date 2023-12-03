@@ -1,5 +1,7 @@
 package com.terminator;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -21,9 +23,21 @@ public class App
         
         transaction.begin();
 
-        em.persist(Person.builder().name("Shango Joseph").age(25).build());
-        em.persist(Person.builder().name("Salaam palya").age(27).build());
-        em.persist(Person.builder().name("Don Jazzy").age(45).build());
+        em.persist(Person.builder()
+            .name("Shango Joseph")
+            .subscriptionDate(new Date())
+            .dob(LocalDate.of(1998, 1, 15))
+            .build());
+        em.persist(Person.builder()
+            .name("Salaam palya")
+            .subscriptionDate(new Date())
+            .dob(LocalDate.of(1996, 1, 15))
+            .build());
+        em.persist(Person.builder()
+            .name("Don Jazzy")
+            .dob(LocalDate.of(1978, 1, 15))
+            .subscriptionDate(new Date())
+            .build());
 
         transaction.commit();
 
