@@ -62,5 +62,6 @@ public class App
         System.out.println(peopleNative.size());
 
         em.close();
+        factory.close(); 
     }
 }
