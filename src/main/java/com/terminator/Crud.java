@@ -19,10 +19,16 @@ public class Crud {
         // findDemo();
         // gerReferenceDemo();
 
-        System.out.println(">>>>> ========= MERGE ======== <<<<<<<<");
-        createDemo();
-        mergeUpdateDemo();
-        mergeSaveDemo();
+        // System.out.println(">>>>> ========= MERGE ======== <<<<<<<<");
+        // createDemo();
+        // mergeUpdateDemo();
+        // mergeSaveDemo();
+
+        System.out.println(">>>>> ========= REMOVE ======== <<<<<<<<");
+        // removeTransientDemo();
+        // removeDetachedDemo1();
+        // removeDetachedDemo2();
+        removeManagedDemo();
     }
 
     private static void createDemo() {
@@ -117,6 +123,87 @@ public class Crud {
 
         Book otherBook = new Book("111", "Effective Java");
         em.merge(otherBook);
+
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    private static void removeTransientDemo() {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        Book book = new Book("111", "Clean Code");
+        /*
+         * When removing an entity having an id, Hibernate will hit the database to retrieve
+         * the entity so that it may remove if
+         */
+        em.remove(book); 
+
+        /*
+         * when removing an entity without id, Hibernate will consider it as transient,
+         * and won't hit the db to retrieve it
+         */
+        Song song = new Song(null, "Shape of you", "Although my heart is falling too");
+        em.remove(song);
+
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    private static void removeDetachedDemo1() {
+        /*
+        * when removing detached objects, a IllegalArgumentException(Removing a detached instance)
+        * will be thrown
+        */
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        Song song = new Song(null, "Baila", "baila X3");
+        em.persist(song);
+
+        em.detach(song);
+
+        /*
+        * removing detached objects will throw an exception
+        */
+        em.remove(song);
+
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    private static void removeDetachedDemo2() {
+        /*
+        * when removing detached objects, a IllegalArgumentException(Removing a detached instance)
+        * will be thrown
+        */
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        Song song = new Song(null, "Baila", "baila X3");
+        em.persist(song);
+        
+        em.getTransaction().commit();
+        em.close(); // when closing the Entity manager, all objects are being detached
+
+        em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        // song is detached koz it's hasn't been created by the current EntityManager
+        em.remove(song);
+
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    private static void removeManagedDemo() {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        Song song = new Song(null, "Baila", "baila X3");
+        em.persist(song);
+
+        em.remove(song);
 
         em.getTransaction().commit();
         em.close();
