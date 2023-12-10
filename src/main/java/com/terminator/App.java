@@ -18,7 +18,7 @@ public class App
     {
         System.out.println( ">> ======== HIBERNATE JPA CORE ========= <<" );
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("firstDemo");  
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("pg-datasource");  
         EntityManager em = factory.createEntityManager();  
         EntityTransaction transaction = em.getTransaction();  
         

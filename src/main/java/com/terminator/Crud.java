@@ -29,6 +29,8 @@ public class Crud {
         // removeDetachedDemo1();
         // removeDetachedDemo2();
         removeManagedDemo();
+
+        emf.close();
     }
 
     private static void createDemo() {
