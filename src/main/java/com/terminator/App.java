@@ -40,7 +40,7 @@ public class App
             .subscriptionDate(new Date())
             .build());
 
-        em.persist(Song.builder().title("Shape of You").script("huh wah huh wah huh wah").build());
+        em.persist(new Song(1L, "Shape of You", "huh wah huh wah huh wah"));
 
         transaction.commit();
 

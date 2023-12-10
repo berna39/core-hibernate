@@ -8,9 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Table(name = "songs")
 @Entity
 public class Song {
