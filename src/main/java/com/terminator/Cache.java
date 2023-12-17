@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.terminator.domain.Book;
 import com.terminator.domain.Person;
 import com.terminator.domain.Team;
 
@@ -23,9 +24,12 @@ public class Cache {
         // System.out.println("======= RETRIEVIAL USES CACHE ========");
         // retrievalUsesCache();
 
-        System.out.println("======= UPDATE HELD IN CACHE ========");
+        // System.out.println("======= UPDATE HELD IN CACHE ========");
         // updateHeldInCacheDemo1();
-        updateHeldInCacheDemo2();
+        // updateHeldInCacheDemo2();
+
+        System.out.println("======= REMOVE HELD IN CACHE ========");
+        removeHeldInCache();
 
         emf.close();
     }
@@ -117,6 +121,31 @@ public class Cache {
         em.persist(team);
 
         team.setName("Vita Club");
+
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    private static void removeHeldInCache() {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        em.persist(new Book("1111", "Effective Java"));
+
+        /*
+         * this is already in the persistance ctx....no need to hit the database
+         */
+        Book book = em.find(Book.class, "1111");
+        System.out.println(em.contains(book)); // true -> already in cache
+
+        /*
+         * this wont trigger an update request, koz hibernate don't need to update an object 
+         * that will somehow be deleted...efficiency
+         */
+        book.setTitle("head first Java");
+
+        em.remove(book);
+        System.out.println(em.contains(book)); // false -> has been removed from cache
 
         em.getTransaction().commit();
         em.close();
