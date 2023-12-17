@@ -1,4 +1,4 @@
-package com.terminator.domain;
+package com.basics.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

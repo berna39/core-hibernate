@@ -1,4 +1,4 @@
-package com.terminator;
+package com.basics;
 
 import java.util.Date;
 
@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.terminator.domain.Person;
+import com.basics.domain.Person;
 
 public class ClearAndClose {
     

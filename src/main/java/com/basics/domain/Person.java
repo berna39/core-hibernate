@@ -1,4 +1,4 @@
-package com.terminator.domain;
+package com.basics.domain;
 
 import java.time.LocalDate;
 import java.util.Date;

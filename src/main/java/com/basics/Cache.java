@@ -1,4 +1,4 @@
-package com.terminator;
+package com.basics;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -7,9 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.terminator.domain.Book;
-import com.terminator.domain.Person;
-import com.terminator.domain.Team;
+import com.basics.domain.Book;
+import com.basics.domain.Person;
+import com.basics.domain.Team;
 
 public class Cache {
     

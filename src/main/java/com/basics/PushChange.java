@@ -1,11 +1,11 @@
-package com.terminator;
+package com.basics;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-import com.terminator.domain.Book;
+import com.basics.domain.Book;
 
 public class PushChange {
     
