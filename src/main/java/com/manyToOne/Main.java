@@ -1,4 +1,4 @@
-package com.relationships;
+package com.manyToOne;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
