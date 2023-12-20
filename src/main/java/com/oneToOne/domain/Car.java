@@ -21,6 +21,6 @@ public class Car {
     private String model;
 
     // uni-directional relationship
-    @OneToOne
+    @OneToOne(mappedBy = "car")
     private Engine engine;
 }

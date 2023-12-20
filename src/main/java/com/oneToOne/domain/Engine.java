@@ -2,6 +2,7 @@ package com.oneToOne.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,4 +17,6 @@ public class Engine {
     @Id
     private Long id;
     private String vin;
+    @OneToOne
+    private Car car;
 }
