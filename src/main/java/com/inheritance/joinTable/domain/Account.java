@@ -1,7 +1,5 @@
-package com.inheritance.singleTable.domain;
+package com.inheritance.joinTable.domain;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +14,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@Entity -> uncomment to test
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // by default
-@DiscriminatorColumn(name = "account_type", discriminatorType = DiscriminatorType.STRING)
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Account {
     
     @Id

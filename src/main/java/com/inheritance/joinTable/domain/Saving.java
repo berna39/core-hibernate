@@ -1,10 +1,8 @@
-package com.inheritance.singleTable.domain;
+package com.inheritance.joinTable.domain;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-// @Entity -> uncomment to test
-@DiscriminatorValue(value = "svg_account")
+@Entity
 public class Saving extends Account {
     
     private double intrest;
