@@ -1,9 +1,9 @@
-package com.inheritance.joinTable.domain;
+package com.inheritance.tableForConcrete.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-// @Entity -> uncomment to test
+@Entity
 public class Checking extends Account {
     
     @Column(name = "[limit]")

@@ -1,7 +1,5 @@
-package com.inheritance.singleTable.domain;
+package com.inheritance.tableForConcrete.domain;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,13 +14,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@Entity -> uncomment to test
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // by default
-@DiscriminatorColumn(name = "account_type", discriminatorType = DiscriminatorType.STRING)
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Account {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // how to customize the sequence
+    @GeneratedValue(strategy = GenerationType.SEQUENCE) // cannot use identity for idenity
     private Long id;
     private double balance;
 }

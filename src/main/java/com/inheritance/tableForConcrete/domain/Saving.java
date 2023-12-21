@@ -1,8 +1,8 @@
-package com.inheritance.joinTable.domain;
+package com.inheritance.tableForConcrete.domain;
 
 import javax.persistence.Entity;
 
-// @Entity -> uncomment to test
+@Entity
 public class Saving extends Account {
     
     private double intrest;

@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Account {
+// @Entity -> uncomment to test
+// @Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Account {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
