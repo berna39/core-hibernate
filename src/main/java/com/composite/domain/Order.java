@@ -1,7 +1,10 @@
 package com.composite.domain;
 
+import java.util.List;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -25,4 +28,7 @@ public class Order {
 
     private String deliveryAddress;
     private Double amount;
+
+    @OneToMany(mappedBy = "order")
+    private List<Payment> payments;
 }
